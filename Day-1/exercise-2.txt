@@ -33,4 +33,8 @@ $ sudo /opt/puppetlabs/bin/puppetserver ca list
 # sign the certificate signing request on the server
 $ sudo /opt/puppetlabs/bin/puppetserver ca sign --certname <node-certificate-name> 
 
+# incase if a certificate is to be removed from the list of certs from the server, we use command,
+$ sudo puppetservr ca clean --certname <certificate-name>
 
+# incase if a certificate is to be deleted from the server
+$ sudo puppetserver ca delete --certname <certificate-name>
