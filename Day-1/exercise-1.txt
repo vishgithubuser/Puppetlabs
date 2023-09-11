@@ -27,7 +27,7 @@ $ sudo apt-get update –y
 $ sudo apt-get install puppetserver
 
 # create a Sym-Link to the Puppet agent binary
-$ ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet
+$ sudo ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet
 
 4) 
 #Check your hostname and set it as per your choice
@@ -48,7 +48,7 @@ $ sudo apt-get update –y
 $ sudo apt-get install puppet-agent
 
 # create a Sym-Link to the Puppet agent binary
-$ ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet
+$ sudo ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet
 
 # Do not start the Puppet Agent service.
 $ sudo systemctl status puppet
