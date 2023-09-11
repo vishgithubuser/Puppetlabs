@@ -33,8 +33,16 @@ $ sudo /opt/puppetlabs/bin/puppetserver ca list
 # sign the certificate signing request on the server
 $ sudo /opt/puppetlabs/bin/puppetserver ca sign --certname <node-certificate-name> 
 
+######### incase of any error wwhile signing a certificate on the server , try removeing the cert and recrete it #############
+
 # incase if a certificate is to be removed from the list of certs from the server, we use command,
 $ sudo puppetservr ca clean --certname <certificate-name>
 
 # incase if a certificate is to be deleted from the server
 $ sudo puppetserver ca delete --certname <certificate-name>
+
+# now to remove a local cert from the agent
+$ sudo puppet ssl --localca clean
+
+# now create a new certificate by running,
+$ sudo puppet agent -t
