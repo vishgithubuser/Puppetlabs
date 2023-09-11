@@ -1,0 +1,65 @@
+Installation Pre-work:
+
+1) 
+Install NTP service if not installed already,
+
+$ sudo apt-get install ntp
+$ sudo systemctl status ntp
+$ sudo systemctl start ntp
+
+# set the timezone on your LAB machine.
+$ sudo timedatectl set-timezone Asia/Kolkata
+
+2) 
+Check Firewall and enable required ports On Ubuntu VM,
+$ sudo systemctl status ufw
+$ sudo ufw status
+$ sudo ufw enable 
+$ sudo ufw allow 8140/tcp
+$ sudo ufw allow ssh
+$ sudo ufw allow http
+
+3) 
+To install Puppet server on Ubuntu, follow below steps,
+$ wget https://apt.puppetlabs.com/puppet7-release-jammy.deb
+$ sudo dpkg –i puppet7-release-jammy.deb
+$ sudo apt-get update –y
+$ sudo apt-get install puppetserver
+
+# create a Sym-Link to the Puppet agent binary
+$ ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet
+
+4) 
+#Check your hostname and set it as per your choice
+$ hostname
+
+#Once installed make sure the puppet server service is enabled and started. Starting the Puppetserver service may take some time.
+
+$ sudo systemctl start puppetserver
+$ sudo systemctl enable puppetserver
+$ sudo systemctl status puppetserver
+
+5)
+# On the 2nd VM, we are going to install the Puppet Agent only.
+To install Puppet Agent on Ubuntu, follow below steps,
+$ wget https://apt.puppetlabs.com/puppet7-release-jammy.deb
+$ sudo dpkg –i puppet7-release-jammy.deb
+$ sudo apt-get update –y
+$ sudo apt-get install puppet-agent
+
+# create a Sym-Link to the Puppet agent binary
+$ ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet
+
+# Do not start the Puppet Agent service.
+$ sudo systemctl status puppet
+$ sudo systemctl disable puppet
+
+$ hostname
+
+# change the hostname if required by editing the file at /etc/hostname under sudo previlages
+
+# create an entry into hosts file to allow to resolve IP-address to hostname.
+
+$ sudo nano /etc/hosts
+
+<ap-address> <host-name>

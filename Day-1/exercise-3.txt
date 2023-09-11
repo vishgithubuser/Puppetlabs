@@ -1,0 +1,8 @@
+# To list all available resource types by running command,
+$ puppet resource - - types   …. This will list all available resources 
+
+# run below command to get status of a resource,
+$ puppet resource <resource-type> <resource-name > manifest.pp
+
+# apply changes to the manifest file
+$ sudo puppet apply manifest.pp

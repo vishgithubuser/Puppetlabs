@@ -1,0 +1,36 @@
+#Bootstraping Puppet Agent to Puppet server
+
+#In order to make sure the Puppet Agent is able to connect and send certificate signing request to Puppet Server, make below changes to the puppet.conf file on the Puppet Agent at,
+
+$ sudo nano /etc/puppetlabs/puppet/puppet.conf
+
+[main]
+certname = node1     # FQDN or DNS name of the agent machine
+server = puppet
+runinterval = 1h
+
+On the puppet server, a sample puppet.conf file can be as shown below,
+[main]
+certname = puppet
+server = puppet
+runinterval = 1h
+strict_variables = true
+
+#[server]
+#dns_alt_names = puppet,<FQDN>
+#reports = puppetdb
+#storeconfigs_backend = puppetdb
+#storeconfigs = true
+
+# Now, on the Puppet Agent run below command
+
+$ sudo puppet agent -t
+
+# Now, on the puppet server check if the server has received the Agent sign request.
+
+$ sudo /opt/puppetlabs/bin/puppetserver ca list
+
+# sign the certificate signing request on the server
+$ sudo /opt/puppetlabs/bin/puppetserver ca sign --certname <node-certificate-name> 
+
+
