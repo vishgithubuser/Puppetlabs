@@ -2,7 +2,7 @@ Installation Pre-work:
 
 1) 
 Install NTP service if not installed already,
-
+$ sudo apt-get update
 $ sudo apt-get install ntp
 $ sudo systemctl status ntp
 $ sudo systemctl start ntp
