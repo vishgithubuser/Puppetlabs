@@ -2,7 +2,7 @@
 
 # using Modern facts
 
-if $facts ['os']['family'] == 'Debian' {
+if $facts['os']['family'] == 'Debian' {
   package { 'RedHat':
     ensure => 'installed',
     provider => 'apt',
