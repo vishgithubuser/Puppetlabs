@@ -3,7 +3,7 @@
 # using Modern facts
 
 if $facts['os']['family'] == 'Debian' {
-  package { 'RedHat':
+  package { 'nginx':
     ensure => 'installed',
     provider => 'apt',
   }
@@ -18,5 +18,5 @@ elsif $facts['os']['family'] == 'Debian' {
   notify { 'Debian' : }
 }
 else {
-  fail (“your OS ${facts ['os']['family']} is not supported”)
+  fail ("your OS ${facts['os']['family']} is not supported")
 }
