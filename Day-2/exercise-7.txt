@@ -1,14 +1,22 @@
-## Download and Install Puppet Enterprise:
+## Using condiftional statements in puppet code
 
+# using Modern facts
 
-$ wget https://pm.puppetlabs.com/puppet-enterprise/2019.8.12/puppet-enterprise-2019.8.12-ubuntu-20.04-amd64.tar.gz
+if $facts ['os']['family'] == 'Debian' {
+  package { 'RedHat':
+    ensure => 'installed',
+    provider => 'apt',
+  }
+}  
 
-$ tar -xvf puppet-enterprise-2019.8.12-ubuntu-20.04-amd64.tar.gz
+## using if-elseif-else
 
-$ cd puppet-enterprise-2019.8.12-ubuntu-20.04-amd64
-
-# In the extracted folder run the installer.
-
-$ sudo su
- 
-$ ./puppet-enterprise-installer
+if $facts['os']['family'] == 'RedHat' {
+  notify { 'RedHat' : }
+}
+elsif $facts['os']['family'] == 'Debian' {
+  notify { 'Debian' : }
+}
+else {
+  fail (“your OS ${facts ['os']['family']} is not supported”)
+}
