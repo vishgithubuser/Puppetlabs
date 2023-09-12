@@ -1,1 +1,36 @@
+### making use of puppet forge
 
+## navigate to puppet forge page on web browser... https://forge.puppet.com/
+
+## search for modules and look for the module that you want to download and install on Puppet server.
+
+$ puppet module install <module-name> --version <version number>
+
+## once install inside the required directory move the module folder to modules under production or any other environment folder of your requirement or public modules folder.
+
+##inside nodes.pp file update the class statement.
+
+## Working with Hiera.
+
+## Hiera configuration file is located in /etc/puppetlabs/code/environment/production/hiera.yaml  and also in /etc/puppetlabs/puppet/hiera.yaml.  we can update the configuration as per our requirement.
+
+## for testing purpose 
+
+$ vi common.yaml
+username: user1
+
+##Now update the nodes.pp or a manifest file inside a module with a node name resource statement as below.
+
+node <nodename> {
+     notify { lookup(username): } 
+   }
+
+## now run the lookup command to check.
+
+$ sudo puppet lookup username --explain  
+
+## if we remove --explain option then we will get the data displayed on the screen.
+
+## to test the implementation on puppet agent run, try running the puppet agent on the defined agent.
+
+$ sudo puppet agent -t
