@@ -1,0 +1,14 @@
+## Download and Install Puppet Enterprise:
+
+
+$ wget https://pm.puppetlabs.com/puppet-enterprise/2019.8.12/puppet-enterprise-2019.8.12-ubuntu-20.04-amd64.tar.gz
+
+$ tar -xvf puppet-enterprise-2019.8.12-ubuntu-20.04-amd64.tar.gz
+
+$ cd puppet-enterprise-2019.8.12-ubuntu-20.04-amd64
+
+# In the extracted folder run the installer.
+
+$ sudo su
+ 
+$ ./puppet-enterprise-installer

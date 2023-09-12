@@ -1,0 +1,27 @@
+## Let's modularize the code
+
+# inside the modules folder let's create folder and name it as ntp
+# inside ntp folder create manifests folder
+# inside manifests folder create a file init.pp
+
+class tools {
+
+ $tools = ['ntp']
+
+     package { $tools:
+     ensure => 'installed',
+   }
+     service { $tools:
+     ensure => 'running',
+     enable => true,
+   }
+}
+
+## similar to this create one more module inside the modules folder, but this time using a command,
+## first we will install PDK on linux machine.
+## run the pdk command to create a new module inside modules folder under production.
+
+$ pdk new module apache 
+
+## navigate to manifest folder inside the nealy create apache module
+## move the apache class from nodes.pp file to init.pp file inside the apache class.

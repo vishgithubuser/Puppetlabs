@@ -1,0 +1,63 @@
+1) ## working with Puppet Class
+
+create a file in /etc/puppetlabs/code/environment/production/manifests/nodes.pp
+
+class apache {
+    $webserver = $osfamily ? {
+      'redhat' => 'httpd',
+      'debian' => 'apache2',
+       default => 'apache2',
+       }
+   package {$webserver:
+       ensure => 'present',
+       }
+   service { $webserver:
+       ensure => 'running',
+       enable => true,
+       }
+
+   file { 'index.html':
+       ensure  => 'present',
+       path    => '/var/www/html/index.html',
+       content => "<html><title>Welcome Page</title>
+                <h1>Hello, Welcome to the training session on Puppet!</h1></html>"
+       }
+     }
+
+2) ###  now add node statement
+
+$ node 'default' {
+    class { 'apache': }
+  }
+
+3) ## let's add one more class
+class ntp {
+    package { 'ntp':
+       ensure => 'installed',
+     }
+    service { 'ntp':
+       ensure => 'stopped',
+       enable => false,
+     }
+   }
+4) ## add one more node statement
+node 'puppet' {
+     class { 'ntp': }
+     class { 'apache': }
+}
+
+5) ## using variable
+
+class tools {
+
+   $tools = ['ntp']
+
+     package { $tools:
+     ensure => 'installed',
+     }
+     service { $tools:
+     ensure => 'running',
+     enable => true,
+     }
+}
+
