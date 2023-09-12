@@ -1,6 +1,6 @@
 1) ## working with Puppet Class
 
-create a file in /etc/puppetlabs/code/environment/production/manifests/nodes.pp
+create a file in /etc/puppetlabs/code/environments/production/manifests/nodes.pp
 
 class apache {
     $webserver = $osfamily ? {
