@@ -20,3 +20,17 @@ elsif $facts['os']['family'] == 'Debian' {
 else {
   fail ("your OS ${facts['os']['family']} is not supported")
 }
+
+## using ordering statements
+
+# add before and require statement to package and Service resource statement.
+
+   package {$webserver:
+       ensure => 'present',
+       before => Service[$webserver]
+       }
+   service { $webserver:
+       ensure => 'stopped',
+       enable => true,
+       require => Package[$webserver]
+       }
