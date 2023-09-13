@@ -26,9 +26,9 @@ $ sudo apt-get install puppet-bolt
 
 6) now test the puppet bolt command to execute remote changes
 
-$ mkdir project-bolt
-$ cd project-bolt
-$ bolt project init project-bolt
+$ mkdir project_bolt
+$ cd project_bolt
+$ bolt project init project_bolt
 
 $ bolt command run 'pwd' --targets <target-server-ip-address>
 
