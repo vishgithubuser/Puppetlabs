@@ -32,7 +32,7 @@ $ bolt project init project_bolt
 
 $ bolt command run 'pwd' --targets <target-server-ip-address>
 
-$ cat coomand.sh | bolt command run - --targets <server-ip-address>
+$ cat script.sh | bolt command run - --targets <server-ip-address>
 
 ## if multiple target hosts are to be executed with command, comma seperate the host names
 
