@@ -26,14 +26,23 @@ $ sudo apt-get install puppet-bolt
 
 6) now test the puppet bolt command to execute remote changes
 
-$ bolt command run 'pwd' --target <target-server-ip-address>
+$ mkdir project-bolt
+$ cd project-bolt
+$ bolt project init project-bolt
 
-$ cat coomand.sh | bolt command run - --target <server-ip-address>
+$ bolt command run 'pwd' --targets <target-server-ip-address>
+
+$ cat coomand.sh | bolt command run - --targets <server-ip-address>
 
 ## if multiple target hosts are to be executed with command, comma seperate the host names
 
-$ bolt command run 'pwd' --target <host-1,host-2,host3,>
+$ bolt command run 'pwd' --targets <host-1,host-2,host3,>
 
+$ bolt command run 'pwd' --targets <server> --user <username> --password <Password123>
+
+$ bolt command run 'pwd' --targets <server> --user <username> --password-prompt
+
+$ bolt command run 'apt-get update' --targets <servers> --run-as <username> --sudo-password-prompt
 
 #### refer to official Puppet Bolt documentation for more detailed usage @  https://www.puppet.com/docs/bolt/latest/running_bolt_commands
 
