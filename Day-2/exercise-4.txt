@@ -1,6 +1,6 @@
 1) ## working with Puppet Class
 
-create a file in /etc/puppetlabs/code/environment/production/manifests/nodes.pp
+create a file in /etc/puppetlabs/code/environments/production/manifests/nodes.pp
 
 class apache {
     $webserver = $osfamily ? {
@@ -8,7 +8,7 @@ class apache {
       'debian' => 'apache2',
        default => 'apache2',
        }
-   package {$webserver:
+   package { $webserver:
        ensure => 'present',
        }
    service { $webserver:
@@ -50,7 +50,7 @@ node 'puppet' {
 
 class tools {
 
-   $tools = ['ntp']
+   $tools = ['ufw']
 
      package { $tools:
      ensure => 'installed',
