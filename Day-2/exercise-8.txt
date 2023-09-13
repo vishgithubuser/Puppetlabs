@@ -13,7 +13,7 @@ $ sudo su
  
 $ ./puppet-enterprise-installer
 
-## once the installation process completes, launch the application on port 3000.
+## once the installation process completes, launch the application on port 80.
 
 # follow the instructins to reset the enterprise login password.
 # run the puppet agent twice.
