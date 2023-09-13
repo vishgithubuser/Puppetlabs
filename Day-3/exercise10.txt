@@ -1,0 +1,25 @@
+##We can download the Chef Workstation from below link
+
+$ wget https://packages.chef.io/files/stable/chef-workstation/21.10.640/ubuntu/20.04/chef-workstation_21.10.640-1_amd64.deb
+
+## install the package using below link
+
+$ sudo dpkg -i chef-workstation_21.10.640-1_amd64.deb
+
+# verify installation using below command. The Chef workstation package is shipped with multiple other utilities.
+
+$ chef -v
+
+## Now we will install the Chef server on standalone machine.
+
+# now we will have to create the developement environment on the workstation. in below command the 'chef-repo' the developement environment folder.
+
+$ chef generate repo chef-repo
+
+## browse the folder and understand all components in this folder.
+
+
+
+
+
+

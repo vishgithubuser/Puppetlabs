@@ -12,3 +12,15 @@ $ cd puppet-enterprise-2019.8.12-ubuntu-20.04-amd64
 $ sudo su
  
 $ ./puppet-enterprise-installer
+
+## once the installation process completes, launch the application on port 3000.
+
+# follow the instructins to reset the enterprise login password.
+# run the puppet agent twice.
+
+$ sudo puppet agent -t  
+# this agent run will take time to complete. once it is completed then run the agent one more time.
+
+$ sudo puppet agent -t
+
+

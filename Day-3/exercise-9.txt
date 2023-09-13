@@ -1,0 +1,39 @@
+## working with puppet bolt
+
+# first we will have to establish ssh connection from the Puppet server to the targeted host.
+
+1) On puppet server first create ssh key
+$ ssh-keygen  ## accept all default and allow the keypair to be created.
+
+2) # now on the targetted machine open the file located at, /etc/ssh/sshd_config. in the this file set the "PasswordAuthentication" value to "yes" 
+
+3) # restart the SSHD service
+
+$ sudo systemctl restart sshd
+
+4) # now on the Puppet server run the command to copy ssh key to the targetted host to establish password less authentication over ssh.
+
+$ ssh-copy-id <Internal-ip-address-of-tergetted-host>
+
+# enter password at the authentication to connect over ssh.
+# now test the ssh connection to heck if the ssh connection is set with passwordless authentication.
+
+$ ssh 10.142.0.4
+
+5) Now install puppet bold on the Puppetserver
+$ sudo apt-get update
+$ sudo apt-get install puppet-bolt
+
+6) now test the puppet bolt command to execute remote changes
+
+$ bolt command run 'pwd' --target <target-server-ip-address>
+
+$ cat coomand.sh | bolt command run - --target <server-ip-address>
+
+## if multiple target hosts are to be executed with command, comma seperate the host names
+
+$ bolt command run 'pwd' --target <host-1,host-2,host3,>
+
+
+#### refer to official Puppet Bolt documentation for more detailed usage @  https://www.puppet.com/docs/bolt/latest/running_bolt_commands
+
