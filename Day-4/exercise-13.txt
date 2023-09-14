@@ -1,0 +1,12 @@
+## connecting to hosted chef server ###
+
+## create your account on hostted chef at https://manage.chef.io/login
+
+## click on 'Click here to get started!'. provide required detail and login to the console after email validation.
+
+## create organization
+
+## download the chef start kit, which includes the user key.
+
+# add the .chef folder to your chef repository folder.
+

@@ -1,0 +1,25 @@
+## create first chef recipe file
+
+$ nano webserver.rb
+
+package 'apache2' do
+   action [:install]
+end
+
+service 'apache2' do
+   action [:enable, :start]
+end
+
+file '/var/www/html/index.html' do
+   content '<html><h1> Hello World </h1></html>'
+end
+
+# save the file and try running the file using below command
+
+## validate the syntax with below command.
+
+$ chef exec ruby -c .\default.rb
+
+# run the recipe file using chef-apply command.. this is local implementation and not invoking client
+$ chef-apply webserver.rb
+

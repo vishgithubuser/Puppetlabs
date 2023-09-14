@@ -1,0 +1,61 @@
+## now that we have the Workstation installed let's start with creating the chef developement environment
+
+$ chef generate repo chef-repo
+
+$ cd chef-repo
+
+## explore the folders and files inside this repsitory folder.
+## cookbook folder holds all cookbooks
+## data_bags folder holds all data bag files.
+
+# move to cookbooks directory. 
+$ cd cookbooks
+
+# create a new cookbook
+
+$ chef generate cookbook <cookbook_name>
+
+## move inside the newly create cookbook folder
+
+$ cd <cookbook_name>
+
+$ cd recipes
+## this folder has a default.rb file which the main file in recipes folder
+## alternatively we can generate a recipe file as well.
+#$ chef generate recipe
+
+$ sudo nano default.rb
+
+package 'apache2' do
+  action [:install]
+end
+
+## validate the syntax with below command.
+
+$ chef exec ruby -c .\default.rb
+
+## add more resources to the file
+
+service 'apache2' do
+        action [:enable, :start]
+end
+
+file '/var/www/html/index.html' do
+        content '<html> <h2>Hello, Welcome to the training session on Chef!</h2></html>'
+end
+
+# save the file and try applying the cookbook.
+
+$ chef-client --local-mode --runlist "recipe[cookbook-name::recipe-name]"
+
+
+
+
+
+
+
+
+
+
+
+
