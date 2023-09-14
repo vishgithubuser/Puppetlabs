@@ -1,4 +1,11 @@
+# Now, let's create a new cookbook with multiple recipes and understand how we deploy it to chef server.
 # let's first create the apache.rb file
+
+$ cd ../chef-repo/cookbooks
+$ chef generate cookbook lamp
+$ cd lamp/recipes
+$ nano apache2.rb
+
 package 'apache2' do
   action [ :install ]
 end
@@ -19,7 +26,7 @@ service 'mysql' do
   action [ :enable, :start ]
 end
 
-# create php.rb file
+# let's create php.rb file
 package 'php' do
   action [ :install ]
 end
@@ -32,7 +39,10 @@ end
 
 ## save the file
 
-## in the default.rb file let's include all package specific recipes.
+## Now, in the default.rb file let's include all package specific recipes.
+$ nano default.rb
+
+# add execute resource to launch repo update before the app installation.
 
 execute 'update_upgrade_repo' do
   command 'apt-get update -y && apt-get upgrade -y'
@@ -42,3 +52,5 @@ include_recipe 'lamp::apache'
 include_recipe 'lamp::mysql'
 include_recipe 'lamp::php'
 ## save the file
+## run the cookbook on workstation to check the results.
+$ sudo chef-client --local-mode --runlist "recipe{lamp::default]"
