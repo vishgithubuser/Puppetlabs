@@ -1,12 +1,15 @@
 ## connecting to hosted chef server ###
 
-## create your account on hostted chef at https://manage.chef.io/login
+## create your account on hosted chef at https://manage.chef.io/login
 
 ## click on 'Click here to get started!'. provide required detail and login to the console after email validation.
 
 ## create organization
 
 ## download the chef start kit, which includes the user key.
+## the downloaded folder contains the .chef folder that we needd to add to chef-repo folder.
+# to get this .chef folder into linux workstation, create a repository on GitHub and add the downloaded ZIP to the repo.
+# now we can download the repository contents to chef workstation by cloning the repo.
 
 # add the .chef folder to your chef repository folder.
 
