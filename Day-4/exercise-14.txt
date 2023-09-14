@@ -34,7 +34,7 @@ end
 
 ## in the default.rb file let's include all package specific recipes.
 
-execute 'update_upgrade_repo'
+execute 'update_upgrade_repo' do
   command 'apt-get update -y && apt-get upgrade -y'
 end
 
